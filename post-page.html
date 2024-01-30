@@ -181,12 +181,13 @@
                 .replace(/[^\w-]+/g, '')    // Remove non-word characters (except hyphens)
                 .replace(/^-+|-+$/g, '');   // Remove leading and trailing hyphens
         }
+    
         // Retrieve user information from local storage
         var userInfo = JSON.parse(localStorage.getItem('userInfo'));
-
+    
         document.getElementById('blogForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevents the form from submitting normally
-
+    
             // Get values from the form fields
             var title = document.getElementById('title').value;
             // Retrieve user information from local storage
@@ -199,15 +200,15 @@
             var slug = slugify(title);
             var keyWordsInput = document.getElementById('keyWords');
             var keyWordsValue = keyWordsInput.value;
-
+    
             // Split the input value into an array of strings using a comma as the delimiter
             var keyWordsArray = keyWordsValue.split(',');
-
+    
             // Remove leading and trailing white spaces from each keyword
             keyWordsArray = keyWordsArray.map(function (keyword) {
                 return keyword.trim();
             });
-
+    
             // Assign the keyWordsArray to the keyWords variable
             var keyWords = keyWordsArray;
             var category = document.getElementById('category').value;
@@ -216,7 +217,7 @@
             var day = currentDate.getDate(); // Get the day of the month (1-31)
             var month = currentDate.getMonth() + 1; // Get the month (0-11) and add 1 to it
             var year = currentDate.getFullYear(); // Get the year in 4-digit format
-
+    
             // Create a formatted date string (e.g., "01/29/2024")
             var date = (month < 10 ? '0' : '') + month + '/' + (day < 10 ? '0' : '') + day + '/' + year;
             var featuredImage = document.getElementById('featuredImage').value;
@@ -228,95 +229,105 @@
             var bpTitleTwo = document.getElementById('bpTitleTwo').value;
             var bpTextTwo = document.getElementById('bpTextTwo').value;
             var bpMediaTwo = document.getElementById('bpMediaTwo').value;
-
+    
             var bpTitleThree = document.getElementById('bpTitleThree').value;
             var bpTextThree = document.getElementById('bpTextThree').value;
             var bpMediaThree = document.getElementById('bpMediaThree').value;
-
+    
             var bpTitleFour = document.getElementById('bpTitleFour').value;
             var bpTextFour = document.getElementById('bpTextFour').value;
             var bpMediaFour = document.getElementById('bpMediaFour').value;
-
+    
             var bpTitleFive = document.getElementById('bpTitleFive').value;
             var bpTextFive = document.getElementById('bpTextFive').value;
             var bpMediaFive = document.getElementById('bpMediaFive').value;
-
+    
             var bpTitleSix = document.getElementById('bpTitleSix').value;
             var bpTextSix = document.getElementById('bpTextSix').value;
             var bpMediaSix = document.getElementById('bpMediaSix').value;
-
+    
             var bpTitleSeven = document.getElementById('bpTitleSeven').value;
             var bpTextSeven = document.getElementById('bpTextSeven').value;
             var bpMediaSeven = document.getElementById('bpMediaSeven').value;
-            var id = ''
+            var id = 0;
+    
+            // Create a custom string representation of the JSON object with variable names in quotes
+            var customJson = 'export const posts = [\n';
+            customJson += '    {\n';
+            customJson += '        id: ' + id + ',\n';
+            customJson += '        author: "' + author + '",\n';
+            customJson += '        authorProfile: "' + authorProfile + '",\n';
+            customJson += '        authorBio: "' + authorBio + '",\n';
+            customJson += '        authorInstagram: "' + authorInstagram + '",\n';
+            customJson += '        authorLinkdIn: "' + authorLinkdIn + '",\n';
+            customJson += '        authorTwitter: "' + authorTwitter + '",\n';
 
 
-            // Create an object with the form data
-            var blogData = {
-                id: id,
-                author: author,
-                authorProfile: authorProfile,
-                authorBio: authorBio,
-                authorInstagram: authorInstagram,
-                authorLinkdIn: authorLinkdIn,
-                authorTwitter: authorTwitter,
-                title: title,
-                slug: slug,
-                keyWords: keyWords,
-                category: category,
-                metaData: metaData,
-                date: date,
-                featuredImage: featuredImage,
-                introParagraph: introParagraph,
-                CTA: CTA,
+            customJson += '        title: "' + title + '",\n';
+            customJson += '        slug: "' + slug + '",\n';
+            customJson += '        keyWords: ' + JSON.stringify(keyWords) + ',\n';
+            customJson += '        category: "' + category + '",\n';
+            customJson += '        metaData: "' + metaData + '",\n';
+            customJson += '        date: "' + date + '",\n';
+            customJson += '        featuredImage: "' + featuredImage + '",\n';
+            customJson += '        introParagraph: "' + introParagraph + '",\n';
+            customJson += '        CTA: "' + CTA + '",\n';
 
-                bpTitleOne: bpTitleOne,
-                bpTextOne: bpTextOne,
-                bpMediaOne: bpMediaOne,
 
-                bpTitleTwo: bpTitleTwo,
-                bpTextTwo: bpTextTwo,
-                bpMediaTwo: bpMediaTwo,
+            customJson += '        bpTitleOne: "' + bpTitleOne + '",\n';
+            customJson += '        bpTextOne: "' + bpTextOne + '",\n';
+            customJson += '        bpMediaOne: "' + bpMediaOne + '",\n';
 
-                bpTitleThree: bpTitleThree,
-                bpTextThree: bpTextThree,
-                bpMediaThree: bpMediaThree,
 
-                bpTitleFour: bpTitleFour,
-                bpTextFour: bpTextFour,
-                bpMediaFour: bpMediaFour,
+            customJson += '        bpTitleTwo: "' + bpTitleTwo + '",\n';
+            customJson += '        bpTextTwo: "' + bpTextTwo + '",\n';
+            customJson += '        bpMediaTwo: "' + bpMediaTwo + '",\n';
 
-                bpTitleFive: bpTitleFive,
-                bpTextFive: bpTextFive,
-                bpMediaFive: bpMediaFive,
 
-                bpTitleSix: bpTitleSix,
-                bpTextSix: bpTextSix,
-                bpMediaSix: bpMediaSix,
+            customJson += '        bpTitleThree: "' + bpTitleThree + '",\n';
+            customJson += '        bpTextThree: "' + bpTextThree + '",\n';
+            customJson += '        bpMediaThree: "' + bpMediaThree + '",\n';
 
-                bpTitleSeven: bpTitleSeven,
-                bpTextSeven: bpTextSeven,
-                bpMediaSeven: bpMediaSeven,
-            };
 
-            // Convert the object to a JSON string
-            var jsonData = JSON.stringify(blogData, null, 2);
+            customJson += '        bpTitleFour: "' + bpTitleFour + '",\n';
+            customJson += '        bpTextFour: "' + bpTextFour + '",\n';
+            customJson += '        bpMediaFour: "' + bpMediaFour + '",\n';
 
-            // Create a Blob containing the JSON data
-            var blob = new Blob([jsonData], { type: 'application/json' });
 
+            customJson += '        bpTitleFive: "' + bpTitleFive + '",\n';
+            customJson += '        bpTextFive: "' + bpTextFive + '",\n';
+            customJson += '        bpMediaFive: "' + bpMediaFive + '",\n';
+
+
+            customJson += '        bpTitleSix: "' + bpTitleSix + '",\n';
+            customJson += '        bpTextSix: "' + bpTextSix + '",\n';
+            customJson += '        bpMediaSix: "' + bpMediaSix + '",\n';
+
+            
+            customJson += '        bpTitleSeven: "' + bpTitleSeven + '",\n';
+            customJson += '        bpTextSeven: "' + bpTextSeven + '",\n';
+            customJson += '        bpMediaSeven: "' + bpMediaSeven + '"\n';
+            customJson += '    },\n';
+            customJson += '];';
+    
+            // Create a Blob containing the custom JSON data
+            var blob = new Blob([customJson], { type: 'application/javascript' });
+    
             // Create a URL for the Blob
             var url = URL.createObjectURL(blob);
-
-            // Create a link to download the JSON file
+    
+            // Create a link to download the JavaScript file
             var link = document.createElement('a');
             link.href = url;
-            link.download = 'blog.json';
-
+            link.download = 'blog.js';
+    
             // Click the link to trigger the download
             link.click();
         });
     </script>
+    
+    
+    
 </body>
 
 </html>
