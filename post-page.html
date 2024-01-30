@@ -186,7 +186,12 @@
             // Get values from the form fields
             var title = document.getElementById('title').value;
             // Retrieve user information from local storage
-            var name = userInfo.name;
+            var author = userInfo.author;
+            var authorProfile = userInfo.authorProfile;
+            var authorBio = userInfo.authorBio;
+            var authorInstagram = userInfo.authorInstagram;
+            var authorLinkdIn = userInfo.authorLinkdIn;
+            var authorTwitter = userInfo.authorTwitter;
             var slug = slugify(title);
             var keyWordsInput = document.getElementById('keyWords');
             var keyWordsValue = keyWordsInput.value;
@@ -244,7 +249,12 @@
 
             // Create an object with the form data
             var blogData = {
-                name: name, // Use the name from user info
+                author: author,
+                authorProfile: authorProfile,
+                authorBio: authorBio,
+                authorInstagram: authorInstagram,
+                authorLinkdIn: authorLinkdIn,
+                authorTwitter: authorTwitter,
                 title: title,
                 slug: slug,
                 keyWords: keyWords,

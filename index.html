@@ -1,40 +1,79 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Blog | Login</title>
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body class="login-body">
     <h1>Welcome 💪 </h1>
     <form id="loginForm">
         <div class="input-container">
             <input type="text" id="username" name="username" required placeholder="Username">
         </div>
-        
+
         <div class="input-container">
             <input type="password" id="password" name="password" required placeholder="Password">
         </div>
-        
+
         <input type="submit" class="login-button" value="Login">
     </form>
-    
+
 
     <script>
         const users = [
-            { username: 'jacobhozer', password: 'moregyms123', name: 'Jacob'},
-            { username: 'massimoliguori', password: 'moregyms123', name: 'Massimo'},
-            { username: 'jadenhozer', password: 'moregyms123', name: 'Jaden'},
+            {
+                username: 'jacobhozer',
+                password: 'moregyms123',
+                author: 'Jacob',
+                authorProfile: 'https://media.licdn.com/dms/image/D5603AQEMH8PmySocMw/profile-displayphoto-shrink_400_400/0/1698375663379?e=1711584000&v=beta&t=b3nuvj8MqKOYHKuOyUZ4d7FxGUIgXh5mnXqKjiJqB1A',
+                authorBio: 'Jacob is CEO and co-founder at MoreGyms. Jacob has a background in engineering and has been working in gyms since he was 14',
+                authorInstagram: 'https://instagram.com/jacobhozer',
+                authorLinkdIn: 'https://www.linkedin.com/in/jacob-hozer-2304561b9/',
+                authorTwitter: 'https://twitter.com/jacobhozer'
+            },
+            {
+                username: 'massimoliguori',
+                password: 'moregyms123',
+                author: 'Massimo',
+                authorProfile: '',
+                authorBio: '',
+                authorInstagram: '',
+                authorLinkdIn: '',
+                authorTwitter: ''
+            },
+            {
+                username: 'jadenhozer',
+                password: 'moregyms123',
+                author: 'Jaden',
+                authorProfile: '',
+                authorBio: '',
+                authorInstagram: '',
+                authorLinkdIn: '',
+                authorTwitter: ''
+            },
+            {
+                username: 'zachlombardo',
+                password: 'moregyms123',
+                author: 'Zach',
+                authorProfile: '',
+                authorBio: '',
+                authorInstagram: '',
+                authorLinkdIn: '',
+                authorTwitter: ''
+            },
         ];
-    
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
-    
+
             var userFound = false;
-    
+
             for (var i = 0; i < users.length; i++) {
                 if (users[i].username === username && users[i].password === password) {
                     userFound = true;
@@ -42,7 +81,7 @@
                     break;
                 }
             }
-    
+
             if (userFound) {
                 alert('Login successful!');
                 window.location.href = 'post-page.html';
@@ -51,6 +90,7 @@
             }
         });
     </script>
-    
+
 </body>
+
 </html>
