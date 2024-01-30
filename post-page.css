@@ -114,3 +114,7 @@ h3{
     border-radius: 50px;
     background-color: lightgray;
 }
+.resources{
+    display: flex;
+    flex-direction: column;
+}

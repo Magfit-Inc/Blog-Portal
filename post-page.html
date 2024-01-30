@@ -37,7 +37,8 @@
                     <p class="required">*</p>
                 </div>
                 <div class="input-container">
-                    <input type="text" id="keyWords" name="keyWords" placeholder="e.g., Key word, Key Word" required>
+                    <textarea type="text" id="keyWords" name="keyWords" placeholder="e.g., Key word, Key Word"
+                        required></textarea>
                 </div>
                 <div class="section-label">
                     <p>Meta data</p>
@@ -51,15 +52,15 @@
                     <p class="required">*</p>
                 </div>
                 <div class="input-container">
-                    <input type="text" id="featuredImage" name="featuredImage" placeholder="Featured image" required>
+                    <input type="text" id="featuredImage" name="featuredImage" placeholder="Featured image link" required>
                 </div>
                 <div class="section-label">
                     <p>Intro paragraph</p>
                     <p class="required">*</p>
                 </div>
                 <div class="input-container">
-                    <textarea type="text" id="introParagraph" name="introParagraph"
-                        placeholder="Intro paragraph" required></textarea>
+                    <textarea type="text" id="introParagraph" name="introParagraph" placeholder="Intro paragraph"
+                        required></textarea>
                 </div>
                 <div class="section-label">
                     <p>Call to action</p>
@@ -162,12 +163,15 @@
         </div>
         <div class="right-side">
             <img src="stevejobs.jpeg" alt="Steve Jobs">
-
             <h3>"The most powerful person in the world is the storyteller"</h3>
             <p>- Steve Jobs</p>
             <div class="divider"></div>
-            <p>Resources</p>
-            <a href="https://www.youtube.com/watch?v=-B58GgsehKQ" target="_blank">SEO in 100 seconds</a>
+            <div class="resources">
+                <p>Resources</p>
+                <li><a href="https://www.youtube.com/watch?v=-B58GgsehKQ" target="_blank">SEO in 100 seconds</a></li>
+                <li> <a href="https://imageshack.com/"
+                        target="_blank">Upload your images here</a></li>
+            </div>
         </div>
     </div>
     <script>
@@ -228,7 +232,7 @@
             var bpTitleThree = document.getElementById('bpTitleThree').value;
             var bpTextThree = document.getElementById('bpTextThree').value;
             var bpMediaThree = document.getElementById('bpMediaThree').value;
-            
+
             var bpTitleFour = document.getElementById('bpTitleFour').value;
             var bpTextFour = document.getElementById('bpTextFour').value;
             var bpMediaFour = document.getElementById('bpMediaFour').value;
