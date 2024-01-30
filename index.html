@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MoreGyms Blog | Login</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body class="login-body">
+    <h1>MoreGyms Blog Login</h1>
+    
+    <form id="loginForm">
+        <div class="input-container">
+            <input type="text" id="username" name="username" required placeholder="Username">
+        </div>
+        
+        <div class="input-container">
+            <input type="password" id="password" name="password" required placeholder="Password">
+        </div>
+        
+        <input type="submit" class="login-button" value="Login">
+    </form>
+    
+
+    <script>
+        // Sample list of usernames and passwords (in a real application, you should store these securely on a server)
+        const users = [
+            { username: 'jacobhozer', password: 'thadboy', name: 'Jacob'},
+            { username: 'massimoliguori', password: 'penissoup', name: 'Massimo'},
+            { username: 'jadenhozer', password: 'fartpants', name: 'Jaden'},
+        ];
+    
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevents the form from submitting normally
+    
+            // Get values from the form fields
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+    
+            // Check if the username and password match any user in the list
+            var userFound = false;
+    
+            for (var i = 0; i < users.length; i++) {
+                if (users[i].username === username && users[i].password === password) {
+                    userFound = true;
+                    localStorage.setItem('userInfo', JSON.stringify(users[i])); // Store user information in local storage
+                    break;
+                }
+            }
+    
+            if (userFound) {
+                alert('Login successful!');
+                window.location.href = 'post-page.html'; // Redirect to the blog page
+            } else {
+                alert('Login failed. Please check your username and password.');
+            }
+        });
+    </script>
+    
+</body>
+</html>
