@@ -56,6 +56,14 @@
                         required>
                 </div>
                 <div class="section-label">
+                    <p>Image description</p>
+                    <p class="required">*</p>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="featuredImageDescription" name="featuredImageDescription" placeholder="Featured image description"
+                        required>
+                </div>
+                <div class="section-label">
                     <p>Intro paragraph</p>
                     <p class="required">*</p>
                 </div>
@@ -69,6 +77,13 @@
                 </div>
                 <div class="input-container">
                     <textarea type="text" id="CTA" name="CTA" placeholder="Call to action" required></textarea>
+                </div>
+                <div class="section-label">
+                    <p>Call to action link</p>
+                    <p class="required">*</p>
+                </div>
+                <div class="input-container">
+                    <textarea type="text" id="CTAlink" name="CTAlink" placeholder="Call to action link" required></textarea>
                 </div>
                 <p>Body paragraphs</p>
                 <div class="input-container">
@@ -390,8 +405,10 @@
             // Create a formatted date string (e.g., "01/29/2024")
             var date = (month < 10 ? '0' : '') + month + '/' + (day < 10 ? '0' : '') + day + '/' + year;
             var featuredImage = document.getElementById('featuredImage').value;
+            var featuredImageDescription = document.getElementById('featuredImageDescription').value;
             var introParagraph = document.getElementById('introParagraph').value;
             var CTA = document.getElementById('CTA').value;
+            var CTAlink = document.getElementById('CTAlink').value;
             var bpTitleOne = document.getElementById('bpTitleOne').value;
             var bpTextOne = document.getElementById('bpTextOne').value;
             var bpMediaOne = document.getElementById('bpMediaOne').value;
@@ -492,8 +509,11 @@
             customJson += '        metaData: "' + metaData + '",\n';
             customJson += '        date: "' + date + '",\n';
             customJson += '        featuredImage: "' + featuredImage + '",\n';
+            customJson += '        featuredImageDescription: "' + featuredImageDescription + '",\n';
             customJson += '        introParagraph: "' + introParagraph + '",\n';
             customJson += '        CTA: "' + CTA + '",\n';
+            customJson += '        CTAlink: "' + CTAlink + '",\n';
+
 
 
             customJson += '        bpTitleOne: "' + bpTitleOne + '",\n';
